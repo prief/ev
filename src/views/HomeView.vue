@@ -1,6 +1,11 @@
 <script setup>
 import HelloWorld from "../components/HelloWorld.vue";
 import { useCounterStore } from "@/stores/counter";
+import { ipcRenderer } from "electron";
+
+ipcRenderer.on("main-process-message", (_event, ...args) => {
+  console.log("[Receive Main Process Message]:", ...args);
+});
 const counter = useCounterStore();
 </script>
 

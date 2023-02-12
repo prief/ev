@@ -8,6 +8,7 @@ import { RouterLink, RouterView } from "vue-router";
       <img alt="Logo" class="logo" src="@/assets/logo.svg" />
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/nodejs">Node.js</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>

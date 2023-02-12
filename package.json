@@ -1,29 +1,69 @@
 {
   "name": "ev",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "electron + vue + vite",
   "private": true,
+  "author": "prief",
+  "main": "dist/main/index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "build": "vite build && electron-builder",
     "test:unit": "vitest --environment jsdom --root src/",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
-  },
-  "dependencies": {
-    "pinia": "^2.0.28",
-    "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/test-utils": "^2.2.6",
+    "electron": "18",
+    "electron-builder": "^23.6.0",
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.3",
+    "pinia": "^2.0.30",
     "prettier": "^2.7.1",
     "vite": "^4.0.0",
-    "vitest": "^0.25.6"
+    "vite-plugin-electron": "^0.11.1",
+    "vite-plugin-electron-renderer": "^0.12.1",
+    "vitest": "^0.25.6",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
+  },
+  "build": {
+    "appId": "com.github.prief",
+    "asar": true,
+    "icon": "public/favicon.ico",
+    "directories": {
+      "output": "dist/release"
+    },
+    "files": [
+      "dist/main",
+      "dist/preload",
+      "dist/renderer"
+    ],
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    }
   }
 }
