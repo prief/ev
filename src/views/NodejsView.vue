@@ -6,7 +6,7 @@ let user = ref(username);
 </script>
 <template>
   <div class="nodejs">
-    <p>Node.js got your computer's user is "{{ user }}"</p>
+    <p>Node.js've got your computer's user is "{{ user }}"</p>
   </div>
 </template>
 
