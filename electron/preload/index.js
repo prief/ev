@@ -1,3 +1,9 @@
+import electronLog from "electron-log";
+
+const log = electronLog.scope("renderer");
+log.info("renderer log begin");
+window.console = window.log = log;
+
 function domReady(condition = ["complete", "interactive"]) {
   return new Promise((resolve) => {
     if (condition.includes(document.readyState)) {

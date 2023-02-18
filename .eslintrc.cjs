@@ -14,5 +14,6 @@ module.exports = {
   globals: {
     process: "readonly",
     __dirname: "readonly",
+    log: "readonly",
   },
 };

@@ -65,5 +65,8 @@
       "allowToChangeInstallationDirectory": true,
       "deleteAppDataOnUninstall": false
     }
+  },
+  "dependencies": {
+    "electron-log": "5.0.0-beta.16"
   }
 }

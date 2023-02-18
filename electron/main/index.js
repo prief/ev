@@ -1,6 +1,11 @@
 import { app, BrowserWindow, shell } from "electron";
 import { join } from "node:path";
+import log from "electron-log";
 
+// Optional, initialize the logger for any renderer processses
+log.initialize({ preload: true });
+log.transports.file.resolvePathFn = () =>
+  join(app.getAppPath(), "logs/main.log");
 process.env.DIST_ELECTRON = join(__dirname, "..");
 process.env.DIST = join(process.env.DIST_ELECTRON, "renderer");
 process.env.PUBLIC = process.env.VITE_DEV_SERVER_URL
@@ -48,7 +53,7 @@ async function createWindow() {
 
   // Test actively push message to the Electron-Renderer
   win.webContents.on("did-finish-load", () => {
-    console.log("main-process-message");
+    log.info("main-process-message");
     win.webContents.send("main-process-message", new Date().toLocaleString());
   });
 
